@@ -1,1 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$DICKTIME</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://cdn.glitch.global/07b70e95-ea31-4781-b0be-7671dea5f81f/penis-i.png" />
+  <style>
+    body {
+      background-color: #000;
+      color: #e6e6e6;
+      font-family: 'Permanent Marker', cursive;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index: 0;
+      overflow-x: hidden;
+    }
 
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://cdn.glitch.global/07b70e95-ea31-4781-b0be-7671dea5f81f/bgbg2.png') no-repeat center center;
+      background-size: cover;
+      opacity: 0.12;
+      z-index: -1;
+      filter: blur(2px);
+    }
+
+    .falling-image {
+      position: fixed;
+      top: -100px;
+      width: 1000px;
+      height: 1300px;
+      background-image: url('https://cdn.glitch.global/07b70e95-ea31-4781-b0be-7671dea5f81f/penis-i.png?v=1751148869883');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fall linear infinite;
+      opacity: 0.1;
+      z-index: 0;
+      filter: brightness(0) invert(1);
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 60px;
+    }
+
+    .main-title {
+      grid-column: span 2;
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom: 2px dashed gold;
+      background: radial-gradient(circle, rgba(26,26,26,0.85) 0%, rgba(0,0,0,0.85) 100%), url('https://cdn.glitch.global/07b70e95-ea31-4781-b0be-7671dea5f81f/bgbg2.png') repeat center center;
+      background-size: cover;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: gold;
+      text-shadow: 0 0 5px white;
+      margin: 0;
+    }
+
+    .tagline {
+      font-size: 1.1em;
+      color: gold;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+
+    .section {
+      text-align: center;
+    }
+
+    .section h2 {
+      color: white;
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px gold;
+    }
+
+    .card {
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      padding: 10px 0;
+      border-bottom: 1px dashed #333;
+      color: #ccc;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 50px 20px;
+      font-size: 0.85em;
+      color: #555;
+      grid-column: span 2;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      border-radius: 20px;
+      margin-top: 10px;
+      z-index: 1;
+    }
+
+    #graffitiCanvas {
+      border: 2px dashed gold;
+      background: #111;
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      margin: 20px auto;
+      border-radius: 20px;
+      cursor: crosshair;
+      
+    }
+
+    @media (max-width: 900px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+        padding: 30px;
+      }
+    }
+    
+    .elon-btn{
+      display: inline-block;
+      padding: 12px 30px;
+      color: gold;
+      font-size: 1.2em;
+      border: 8px solid transparent;
+      border-radius: 12px;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      border-radius: 12px;
+      box-shadow: 0 0 12px gold;
+      transition: transform 0.2s ease;    
+    }
+    
+     .elon-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px gold;
+      color: black;
+      background: white;
+    }
+    
+    .CA{
+      margin-top: 25px;
+      font-size: 0.95em;
+      text-align: center;
+      padding: 10px;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+     .CA:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px gold;
+      color: black;
+      background: white;
+    }
+    
+    .img-banner{
+      max-width:100%; 
+      margin-top:20px; 
+      border-radius:20px; 
+      box-shadow:0 0 10px gold;
+      filter: brightness(0) invert(1);
+    }
+    
+    .img-banner:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px gold;
+      filter: brightness(1) invert(0);
+    }
+    
+    .tweet-btn{      
+      padding: 12px 24px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 2px dashed gold;
+      color: gold;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px gold;
+      transition: 0.2s ease;
+    }
+    
+    .tweet-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px gold;
+      color: black;
+      background: white;
+    }
+    
+    .clear-btn{
+      padding: 12px 24px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 2px dashed gold;
+      color: gold;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px gold;
+      transition: 0.2s ease;
+      margin-left: 10px;
+    }
+    
+    .clear-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px gold;
+      color: black;
+      background: white;
+    }
+    
+    .social-tray {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 9999;
+    }
+
+    .social-button {
+      width: 42px;
+      height: 42px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 2px solid #e6e6e6;
+      border-radius: 50%;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0.85;
+      filter: brightness(0) invert(1);
+    }
+
+    .social-button:hover {
+      transform: scale(1.1);
+      opacity: 1;
+      box-shadow: 0 0 40px gold;
+    }
+
+    .social-button.twitter {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/5968/5968830.png'); 
+    }
+
+    .social-button.pumpfun {
+      filter: brightness(1) invert(0);
+      background-image: url('https://cdn.glitch.global/07b70e95-ea31-4781-b0be-7671dea5f81f/PUMPFUNLOGO.webp');
+    }
+    
+    
+  </style>
+</head>
+<body>
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const img = document.createElement('div');
+      img.className = 'falling-image';
+      img.style.left = Math.random() * 100 + 'vw';
+      img.style.animationDuration = (3 + Math.random() * 5) + 's';
+      document.body.appendChild(img);
+    }
+  </script>
+  <header style="
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    border-bottom: 2px dashed gold;
+    box-shadow: 0 0 10px black;
+  ">
+    <a href="#about" style="color: white; text-decoration: none;">About</a>
+    <a href="#usecases" style="color: white; text-decoration: none;">Use Cases</a>
+    <a href="#tokenomics" style="color: white; text-decoration: none;">Tokenomics</a>
+    <a href="#why" style="color: white; text-decoration: none;">Why</a>
+    <a href="#dvi" style="color: white; text-decoration: none;">DVI</a>
+    <a href="#wall" style="color: white; text-decoration: none;">Wall</a>
+    <a href="#measure" style="color: white; text-decoration: none;">Measure</a>
+  </header>
+
+  <div class="grid-container">
+    <div class="main-title">
+      <div class="card">
+      <h1>Mean Time To Dick (    $DICKTIME     )</h1>
+      <p class="tagline">The Only Metric That Matters in AI & Degeneracy</p>
+        <img src="https://cdn.glitch.global/07b70e95-ea31-4781-b0be-7671dea5f81f/00webp500.jpg?" alt="Dicktime Banner" class="img-banner" />
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="https://x.com/elonmusk/status/1253834316242616328" target="_blank" style="display: inline-block; text-decoration: none;">
+            <div class="elon-btn">
+              Elon's Testimonial
+            </div>
+          </a>
+         <div class="CA">
+          <strong>CA:</strong> <span style="user-select: all;">Dropping soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="about">
+      <h2>About</h2>
+      <div class="card">
+        <p>Mean Time To Dick ($DICKTIME) is the new gold standard for evaluating how fast any form of intelligence crashes into NSFW degeneracy. $DICKTIME embraces the inevitable — and monetizes it.</p>
+      </div>
+    </div>
+
+    <div class="section" id="usecases">
+      <h2>Use Cases</h2>
+      <div class="card">
+        <ul>
+          <li>🧠 Simulate brain decay in AI via the Dicktime Model™</li>
+          <li>🔁 Loop meme cycles using degenerate entropy feedback</li>
+          <li>🥷 Shadowban sniper — detect tweets too based for the algo</li>
+          <li>🚽 Analyze toilet-based alpha leaks via on-chain urinalysis</li>
+          <li>📟 Transmit chaos through the Dicktime Oscillator Network (DON)</li>
+          <li>🛸 Summon intergalactic degen frequencies at maximum $DICKTIME</li>
+          <li>📏 Measure Global Dicktime by analysing recent transactions of your worthless wallets</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="tokenomics">
+      <h2>Tokenomics</h2>
+      <div class="card">
+        <p>
+          Total Supply: 1,000,000,000 $DICKTIME<br />
+          Launch: Pump.fun<br />
+          3% to AI testing labs (totally not for bribes)<br />
+          0% Real Utility — 100% Cultural Relevance
+        </p>
+      </div>
+    </div>
+
+    <div class="section" id="why">
+      <h2>Why $DICKTIME?</h2>
+      <div class="card">
+        <p>Because IQ is outdated. The real intelligence test is how long it takes before the convo gets weird. $DICKTIME is the stopwatch of degeneracy.</p>
+      </div>
+    </div>
+
+    <div class="section" id="dvi">
+      <h2>Dicktime Volatility Index (DVI)</h2>
+      <div class="card">
+        <p><br>“When this chart pumps, dicks are flying. When it dumps, they're shrinking.”<br>Use this tool to measure the mood of the degen market — in inches.</p>
+        <canvas id="dviChart"></canvas>
+      </div>
+    </div>
+
+     <div class="section" id="wall">
+      <h2>Global DICKTIME Thesis Wall</h2>
+      <div class="card">
+        <p><br><br><br>Draw whatever your degen soul desires. This wall is shared by all who enter. What you leave is your legacy.</p>
+        <canvas id="graffitiCanvas"></canvas>
+        <div style="margin-top: 20px;">
+          <button onclick="tweetDegenArt()" class="tweet-btn">
+            Tweet Your Thesis art
+          </button>
+          <button onclick="clearCanvas()" class="clear-btn">
+            Clear Wall
+          </button>
+        </div>
+      </div>
+    </div>
+      
+    <div class="section" id="measure">
+      <h2>Global DICKTIME Measure</h2>
+      <div class="card">  
+      <div class="sol-widget">
+      <input id="solWallet" placeholder="Enter SOL wallet address" style="width: 300px;"/>
+      <button id="analyzeBtn" class="tweet-btn">Analyze Wallet</button>
+      <div id="solReport" class="card" style="margin-top:20px; display:none;">
+        <p id="balances" style="color: gold;"></p>
+        <p id="activities" style="color: gold;"></p>
+        <p id="profit" style="color: gold;"></p>
+        <p id="commentary" style="color: gold;"></p>
+      </div>
+    </div>
+        </div>
+      </div>
+      
+      <div class="social-tray">
+        <a href="https://twitter.com/dicktime_sol" target="_blank" class="social-button twitter" aria-label="Twitter"></a>
+        <a href="https://pump.fun/" target="_blank" class="social-button pumpfun" aria-label="PumpFun"></a>
+      </div>
+
+    <div class="footer">
+      <p>$DICKTIME is not financial advice, it’s an intellectual litmus test. You’ve already failed by reading this far. Dicktime already?</p>
+    </div>
+  </div>
+</div>
+
+  <script>
+    
+      const canvas = document.getElementById('dviChart');
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width = canvas.offsetWidth;
+      const h = canvas.height = canvas.offsetHeight;
+
+      function drawLineChart() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.beginPath();
+        ctx.moveTo(0, h / 2);
+        for (let x = 0; x < w; x += 10) {
+          const y = h / 2 + Math.sin((x + Date.now() / 100) / 20) * (Math.random() * 40 + 10);
+          ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = 'gold';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+      setInterval(drawLineChart, 100);
+
+
+      const graffitiCanvas = document.getElementById('graffitiCanvas');
+      const gctx = graffitiCanvas.getContext('2d');
+      graffitiCanvas.width = graffitiCanvas.offsetWidth;
+      graffitiCanvas.height = graffitiCanvas.offsetHeight;
+      let drawing = false;
+      let lastX = 0;
+      let lastY = 0;
+
+      graffitiCanvas.addEventListener('mousedown', (e) => {
+        drawing = true;
+        const rect = graffitiCanvas.getBoundingClientRect();
+        lastX = e.clientX - rect.left;
+        lastY = e.clientY - rect.top;
+      });
+
+      graffitiCanvas.addEventListener('mouseup', () => drawing = false);
+      graffitiCanvas.addEventListener('mouseout', () => drawing = false);
+
+      graffitiCanvas.addEventListener('mousemove', (e) => {
+        if (!drawing) return;
+        const rect = graffitiCanvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        gctx.strokeStyle = 'gold';
+        gctx.lineWidth = 2;
+        gctx.lineCap = 'round';
+        gctx.lineJoin = 'round';
+        gctx.beginPath();
+        gctx.moveTo(lastX, lastY);
+        gctx.lineTo(x, y);
+        gctx.stroke();
+
+        lastX = x;
+        lastY = y;
+      });
+    
+    function tweetDegenArt() {
+    const imageData = graffitiCanvas.toDataURL("image/png");
+    const link = document.createElement('a');
+    link.download = 'degen-art.png';
+    link.href = imageData;
+    link.click();
+
+    setTimeout(() => {
+      const tweetText = encodeURIComponent("I left my thesis on the Global Dicktime Thesis Wall 🧱⚡️");
+      const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}`;
+      window.open(tweetUrl, '_blank');
+      alert("Your drawing has been saved as an image. Upload it manually to your tweet. Stay based.");
+    }, 300);
+  }
+    
+    function clearCanvas() {
+      gctx.clearRect(0, 0, graffitiCanvas.width, graffitiCanvas.height);
+    }
+
+    </script>
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+<script>
+(async () => {
+  const { Connection, PublicKey, LAMPORTS_PER_SOL } = solanaWeb3;
+  // const connection = new Connection('https://api.mainnet-beta.solana.com', 'confirmed');
+  const connection = new Connection('https://mainnet.helius-rpc.com/?api-key=412e8238-7f81-4dd3-b197-646341f98a90', 'confirmed');
+
+
+  document.getElementById('analyzeBtn').onclick = async () => {
+    const addr = document.getElementById('solWallet').value.trim();
+    if (!addr) return alert('Enter a wallet address.');
+    const pk = new PublicKey(addr);
+    const report = document.getElementById('solReport');
+    report.style.display = 'block';
+    document.getElementById('balances').textContent = 'Loading balances...';
+
+    try {
+      const solLamports = await connection.getBalance(pk);
+      const sol = solLamports / LAMPORTS_PER_SOL;
+
+      const sigs = await connection.getSignaturesForAddress(pk, {limit: 50});
+      let receivedSol = 0, sentSol = 0;
+      for (const s of sigs) {
+        const tx = await connection.getParsedTransaction(s.signature, {
+          maxSupportedTransactionVersion: 0
+        });
+        if (!tx) continue;
+        const pre = tx.meta.preBalances[0];
+        const post = tx.meta.postBalances[0];
+        const diff = (post - pre) / LAMPORTS_PER_SOL;
+        if (diff > 0) receivedSol += diff;
+        else sentSol += -diff;
+      }
+
+      const pnl = sol + sentSol - receivedSol;
+      const score = Math.round((sol + receivedSol + sentSol) * 10);
+
+      document.getElementById('balances').textContent = 
+        `Current SOL: ${sol.toFixed(4)} | Received: ${receivedSol.toFixed(2)} | Sent: ${sentSol.toFixed(2)}`;
+      document.getElementById('activities').textContent = `Transactions analyzed: ${sigs.length}`;
+      document.getElementById('profit').textContent = `Estimated PnL: ${pnl.toFixed(2)} SOL`;
+      document.getElementById('commentary').textContent = 
+        `Score: ${score} — ${pnl > 0 ? 'Profit taken' : pnl < 0 ? 'Underwater' : 'Breakeven'}.`;
+
+    } catch (err) {
+      alert('Error analyzing wallet: ' + err);
+    }
+  };
+})();
+</script>
+</body>
+</html>
